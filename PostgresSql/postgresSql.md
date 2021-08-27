@@ -21,6 +21,16 @@ The point of an aggregate functions is to take multiple inputs and returns a sin
 Common aggregate functions inlcude avg() count() sum() . 
 Aggregate functions only happen in the select statement or in the having clause. 
 
+## When do we need to prepend the table name to the query ?
+Take the below as an example:
+
+```sql
+SELECT film.film_id, title, inventory_id,store_id FROM film
+LEFT JOIN inventory ON inventory.film_id = film.film.id
+```
+We need to prepend our table name to the column we are going to select if that table column name is not unique to that specific table. In the example above film_id is not unique to the film table as it also appears in our inventory table. Because of this we need to prepend it with our table name.  
+
+
 ## How can we GROUP BY ?
 
 The Group BY clause must appear right after a `FROM` OR `WHERE` statement. 
@@ -38,3 +48,12 @@ Here is another example on how to filter based on the aggregate function perform
 ```sql
     SELECT company, SUM(sales) FROM finance_table  WHERE company != 'Google' GROUP BY company HAVING SUM(sales) > 100
 ```
+## Performing a `LEFT OUTER JOIN`
+
+A left outer join grabs every thing from the left table. For the table that we are joining to, the results return null if nothing matches. 
+
+### What if we only wanted entries unique to out left table ?
+```sql
+    SELECT * FROM Registrations LEFT OUTER JOIN Logins ON Registration.name = Logins.name WHERE Logins.log_id IS null
+```
+The above example shows how we could grab entries unique to Registration . 
