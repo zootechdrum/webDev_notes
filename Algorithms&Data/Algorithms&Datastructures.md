@@ -75,7 +75,7 @@ function hasDuplicates(n) {
 ```
 
 ## What is a Linearithmic algorithm ?
-Linearithmic time complexity it's slightly lower than a linear algorithm. Howerver, it's still better the having an algorithm with a time complexity of 0(n^2);
+Linearithmic time complexity it's slightly lower than a linear algorithm. However, it's still better the having an algorithm with a time complexity of 0(n^2);
 
 In a Linearithmic algorithm we split our input into 2. We keep splitting the input until we come out with the result that we are looking for. 
 
