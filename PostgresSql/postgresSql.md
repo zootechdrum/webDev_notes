@@ -57,3 +57,14 @@ A left outer join grabs every thing from the left table. For the table that we a
     SELECT * FROM Registrations LEFT OUTER JOIN Logins ON Registration.name = Logins.name WHERE Logins.log_id IS null
 ```
 The above example shows how we could grab entries unique to Registration . 
+
+## When is COALESCE used? Why use it at all ?
+
+The `COALESCE` function is used when we want to perform some sort of calculation where we can't accept NUll as a value to calculate and would instead like to replace that NULL value with an integer like 0 . 
+
+For example,
+```sql
+    SELECT item,(price - COALESCE(discount,0)) AS final FROM table;
+```
+
+In the function COALESCE if the `discount` column in NUll the integer after in the second parameter will be substituted in replacement.
